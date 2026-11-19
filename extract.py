@@ -9,23 +9,17 @@ from pathlib import Path
 
 DEFAULT_LOG = Path(__file__).parent / "data" / "festival_log.txt"
 
-# 1. 이메일: @ 바로 뒤에 글자가 와야 하므로 'hyunwoo@.ac.kr'은 걸리지 않는다.
 EMAIL = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}")
 
-# 2. 휴대폰: 010 + 구분자(-, ., 공백) + 4자리 + 구분자 + 4자리.
-#    앞뒤에 숫자가 더 붙은 경우는 (?<!\d), (?!\d)로 막는다.
+
 PHONE = re.compile(r"(?<!\d)010[-. ]\d{4}[-. ]\d{4}(?!\d)")
 
-# 3. 학번/학과: [202로 시작하는 9자리 / 학과명]
 STUDENT = re.compile(r"\[(202\d{6})\s*/\s*([^\]]+?)\s*\]")
 
-# 4-1. GitHub 저장소: github.com/소유자/저장소 (gitlab.com은 호스트가 달라 제외된다)
 GITHUB = re.compile(r"https?://github\.com/[\w.-]+/[\w.-]+")
 
-# 4-2. 2026년 발급 쿠폰
 COUPON = re.compile(r"\bFEST-2026-[A-Z0-9]{4}\b")
 
-# 5. 부스 총매출: '매출:' 바로 뒤 금액만. 카드/현금 내역과 쿠폰 금액은 앞에 '매출:'이 없다.
 SALES = re.compile(r"매출:\s*([\d,]+)원")
 
 
