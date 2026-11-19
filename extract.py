@@ -5,18 +5,18 @@ from pathlib import Path
 
 DEFAULT_LOG = Path(__file__).parent / "data" / "festival_log.txt"
 
-EMAIL = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}")
+EMAIL = re.compile(r"[a-zA-Z0-9._]+@[a-zA-Z0-9]+[.][a-zA-Z0-9.]+")
 
 
-PHONE = re.compile(r"(?<!\d)010[-. ]\d{4}[-. ]\d{4}(?!\d)")
+PHONE = re.compile(r"010[-. ]\d{4}[-. ]\d{4}")
 
-STUDENT = re.compile(r"\[(202\d{6})\s*/\s*([^\]]+?)\s*\]")
+STUDENT = re.compile(r"\[(202\d{6}) / (\w+)\]")
 
-GITHUB = re.compile(r"https?://github\.com/[\w.-]+/[\w.-]+")
+GITHUB = re.compile(r"https?://github[.]com/[\w.-]+/[\w.-]+")
 
-COUPON = re.compile(r"\bFEST-2026-[A-Z0-9]{4}\b")
+COUPON = re.compile(r"FEST-2026-[A-Z0-9]{4}")
 
-SALES = re.compile(r"매출:\s*([\d,]+)원")
+SALES = re.compile(r"매출: ([\d,]+)원")
 
 
 def extract(text: str) -> dict:
