@@ -1,7 +1,3 @@
-"""대동제·해커톤 통합 운영 로그에서 정규표현식으로 정보를 뽑아낸다.
-
-사용법: python extract.py [로그 파일 경로]
-"""
 
 import re
 import sys
